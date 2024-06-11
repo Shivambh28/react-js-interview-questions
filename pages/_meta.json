@@ -1,11 +1,14 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
+  "howtousethisguide": "How to Use This Guide",
+  "fundamentals": "Fundamentals of React",
+  "beginnerreact": "Beginner React Concepts",
+  "intermediatereactconcepts": "Intermediate React Concepts",
+  "advancedreactconcepts": "Advanced React Concepts",
+  "ecosystem": "React Ecosystem",
+  "Real-World React": "Real-World React",
+  "Interviews and Challenges": "Interviews and Challenges",
+  "Resources": "Resources",
   "contact": {
     "title": "Contact ↗",
     "type": "page",
