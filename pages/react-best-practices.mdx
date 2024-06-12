@@ -1,0 +1,113 @@
+---
+title: "The Ultimate Guide to React JS Best Practices"
+description: "Discover React JS best practices for robust and efficient code. Follow the rules of Hooks to ensure bug-free and consistent components."
+---
+
+# React JS Best Practices
+
+import Banner from '../components/Banner'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+
+<Banner>
+    <div style={{ fontWeight: 'bold', fontSize: '18px' }} >
+        <FontAwesomeIcon style={{display: 'inline', marginRight: '10px'}} icon={faInfoCircle} width="24" /> <span>🎉  WE ARE NOW PART OF <a href="https://frontendlead.com?utm_source=reactjsinterview" style={{ color: '#006a96' }}>FRONTENDLEAD</a>!</span>
+    </div>
+    ReactJS Interview Questions has merged with FrontendLead! All content is being transferred, and you can find the updated material at <a href="https://frontendlead.com?utm_source=reactjsinterview">FrontendLead</a>.
+</Banner>
+
+Mastering React involves more than just understanding its syntax and features; it also means adopting best practices that make your code more robust, maintainable, and efficient. Here are some essential best practices every React developer should follow.
+
+## Rules of Hooks
+
+Hooks are a powerful feature in React, but they come with rules that must be followed to avoid bugs and inconsistencies in your components.
+
+- **Only Call Hooks at the Top Level:** Do not call Hooks inside loops, conditions, or nested functions.
+- **Only Call Hooks from React Functions:** Call them from within React functional components, not regular JavaScript functions.
+
+```jsx
+// Correct
+function useCustomHook() {
+  useEffect(() => {
+    // Your logic here
+  });
+}
+
+// Incorrect
+function someFunction() {
+  if (true) {
+    useEffect(() => {
+      // This is not allowed
+    });
+  }
+}
+```
+
+## Using useCallback and useMemo Appropriately
+
+\`useCallback\` and \`useMemo\` can optimize performance, but they should be used judiciously to avoid unnecessary complexity.
+
+- **useCallback:** Use it to memoize functions if they are passed as props to optimized child components that rely on reference equality to prevent unnecessary renders.
+- **useMemo:** Use it to memoize expensive calculations that depend on specific dependencies.
+
+```jsx
+const memoizedCallback = useCallback(() => {
+  doSomething(a, b);
+}, [a, b]); // Only re-create when \`a\` or \`b\` changes
+
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+```
+
+## Prop Types and Default Props
+
+Using \`propTypes\` and \`defaultProps\` helps ensure your components are used correctly and makes your code more readable.
+
+```jsx
+import PropTypes from 'prop-types';
+
+function UserProfile({ name, age }) {
+  return (
+    <div>{name} is {age} years old.</div>
+  );
+}
+
+UserProfile.propTypes = {
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number
+};
+
+UserProfile.defaultProps = {
+  age: 30
+};
+```
+
+## Keeping Components Small and Focused
+
+Small, focused components are easier to test, debug, and maintain. Try to ensure that each component only handles one responsibility.
+
+```jsx
+// Good: Each component has a clear, focused responsibility
+function UserName({ user }) {
+  return <span>{user.name}</span>;
+}
+
+function UserAge({ user }) {
+  return <span>{user.age} years old</span>;
+}
+```
+
+## Conditional Rendering Best Practices
+
+When rendering conditionally in React, aim to keep your logic clean and straightforward.
+
+```jsx
+function WelcomeMessage({ isLoggedIn }) {
+  return (
+    <div>
+      {isLoggedIn ? <LoggedInGreeting /> : <GuestGreeting />}
+    </div>
+  );
+}
+```
+
+Adopting these best practices in your React development process will help you build more reliable and maintainable applications. Leveraging hooks correctly, structuring components efficiently, and using prop types can significantly enhance the quality of your code.

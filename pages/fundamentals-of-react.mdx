@@ -1,0 +1,111 @@
+---
+title: "Fundamentals of React JS: A Comprehensive Guide"
+description: "Become an expert in React JS fundamentals: Get a deep understanding of JSX, components, props, state, and lifecycle methods."
+---
+
+# Fundamentals of React
+
+import Banner from '../components/Banner'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+
+<Banner>
+    <div style={{ fontWeight: 'bold', fontSize: '18px' }} >
+        <FontAwesomeIcon style={{display: 'inline', marginRight: '10px'}} icon={faInfoCircle} width="24" /> <span>🎉  WE ARE NOW PART OF <a href="https://frontendlead.com?utm_source=reactjsinterview" style={{ color: '#006a96' }}>FRONTENDLEAD</a>!</span>
+    </div>
+    ReactJS Interview Questions has merged with FrontendLead! All content is being transferred, and you can find the updated material at <a href="https://frontendlead.com?utm_source=reactjsinterview">FrontendLead</a>.
+</Banner>
+
+Understanding the fundamentals of React is crucial for any front-end developer aiming to excel in both interviews and practical applications. This section covers the core building blocks of React, including JSX, components, props, state, and lifecycle methods.
+
+## JSX
+
+**JSX** stands for JavaScript XML. It allows you to write HTML-like syntax which gets transformed into lightweight JavaScript objects. JSX makes it easier to visualize and work with the UI within the JavaScript code, enhancing the development experience by simplifying debugging and error identification.
+
+### Example of JSX
+```jsx
+const element = <h1>Welcome to React!</h1>;
+```
+
+## Components
+
+Components are the heart of React's UI abstraction, allowing you to split the UI into independent, reusable pieces.
+
+### Functional Components
+These are simple JavaScript functions that take props as an argument and return React elements.
+
+#### Example of a Functional Component
+```jsx
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+```
+
+### Class Components
+These are ES6 classes that offer more features such as local state and lifecycle methods.
+
+#### Example of a Class Component
+```jsx
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+```
+
+## Props vs. State
+
+**Props** (properties) and **state** are core concepts in React that control the data and display of components.
+
+### Props
+Props are read-only components that must be pure functions with respect to their props.
+
+#### Example of using Props
+```jsx
+function ChildComponent(props) {
+  return <span>{props.message}</span>;
+}
+```
+
+### State
+State allows components to create and manage their own data, which is local and encapsulated, not accessible by other components unless passed as props.
+
+#### Example of using State
+```jsx
+class StatefulComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { message: 'Hello, world!' };
+  }
+  render() {
+    return <span>{this.state.message}</span>;
+  }
+}
+```
+
+## Lifecycle Methods
+
+Lifecycle methods are special functions that each component can have, allowing you to run code at particular times.
+
+### Mounting
+These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
+- \`constructor()\`
+- \`static getDerivedStateFromProps()\`
+- \`render()\`
+- \`componentDidMount()\`
+
+### Updating
+An update can be caused by changes to props or state. These methods are called in order:
+- \`static getDerivedStateFromProps()\`
+- \`shouldComponentUpdate()\`
+- \`render()\`
+- \`getSnapshotBeforeUpdate()\`
+- \`componentDidUpdate()\`
+
+### Unmounting
+This method is called when a component is being removed from the DOM:
+- \`componentWillUnmount()\`
+
+Understanding these fundamentals is essential for efficiently building and managing React applications and is crucial for tackling React interviews effectively, where proficiency in these areas is often tested.
+
+

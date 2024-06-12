@@ -1,0 +1,76 @@
+---
+title: "A Beginner's Guide to Understanding React JS Concepts"
+description: "Build a solid foundation in React JS: Understand the fundamental concepts of React to develop new features without rewriting existing code."
+---
+
+# Beginner React Concepts
+
+import Banner from '../components/Banner'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+
+<Banner>
+    <div style={{ fontWeight: 'bold', fontSize: '18px' }} >
+        <FontAwesomeIcon style={{display: 'inline', marginRight: '10px'}} icon={faInfoCircle} width="24" /> <span>🎉  WE ARE NOW PART OF <a href="https://frontendlead.com?utm_source=reactjsinterview" style={{ color: '#006a96' }}>FRONTENDLEAD</a>!</span>
+    </div>
+    ReactJS Interview Questions has merged with FrontendLead! All content is being transferred, and you can find the updated material at <a href="https://frontendlead.com?utm_source=reactjsinterview">FrontendLead</a>.
+</Banner>
+
+Welcome to the beginner's guide to React. This section introduces you to the basics of React, helping you build a strong foundation for more advanced topics.
+
+## What is React?
+
+React is a JavaScript library for building user interfaces, primarily for single-page applications where you need responsive updates to the user's interface without reloading the page. It's developed and maintained by Facebook and the community of developers.
+
+### Why React?
+- **Declarative:** React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
+- **Component-Based:** Build encapsulated components that manage their own state, then compose them to make complex UIs.
+- **Learn Once, Write Anywhere:** Develop new features in React without rewriting existing code. React can also render on the server using Node and power mobile apps using React Native.
+
+## Creating Your First React App
+
+To start building your first React application, you can use the Create React App (CRA) command-line tool. CRA provides a modern build setup with no configuration.
+
+```bash
+npx create-react-app my-first-react-app
+cd my-first-react-app
+npm start
+```
+
+## Understanding Virtual DOM
+
+The Virtual DOM (VDOM) is a programming concept where an ideal, or "virtual", representation of a UI is kept in memory and synced with the "real" DOM by a library such as React DOM. This process is called reconciliation.
+
+### Benefits of Virtual DOM
+- **Efficiency:** The Virtual DOM allows React to minimize DOM manipulation by batching updates and applying them efficiently to the real DOM.
+- **Speed:** Only necessary parts of the DOM get updated, which enhances the performance and user experience.
+
+## Handling Events
+
+React elements handle events similarly to handling events on DOM elements. However, there are some syntax differences:
+
+- React event handlers are named using camelCase, rather than lowercase.
+- With JSX you pass a function as the event handler, rather than a string.
+
+```jsx
+<button onClick={shoot}>Take the shot!</button>
+
+function shoot() {
+  alert('Great Shot!');
+}
+```
+
+## Conditional Rendering
+
+In React, you can create distinct components that encapsulate behavior you need. Then, you can render only some of them, depending on the state of your application.
+
+```jsx
+function Welcome(props) {
+  return <h1>Hello, {props.isLoggedIn ? 'User' : 'Guest'}</h1>;
+}
+```
+
+Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like `if` or the conditional operator to create elements representing the current state, and let React update the UI to match them.
+
+---
+This introduction to React basics should help you get your feet wet in the world of modern web development with React.

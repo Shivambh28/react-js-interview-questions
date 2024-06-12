@@ -1,0 +1,148 @@
+---
+title: "Advanced Guide to Understanding React JS"
+description: "Master React JS with this advanced guide. Gain a deep understanding of React's concepts, tools, and best practices."
+---
+
+# Advanced React Concepts
+
+import Banner from '../components/Banner'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+
+<Banner>
+    <div style={{ fontWeight: 'bold', fontSize: '18px' }} >
+        <FontAwesomeIcon style={{display: 'inline', marginRight: '10px'}} icon={faInfoCircle} width="24" /> <span>🎉  WE ARE NOW PART OF <a href="https://frontendlead.com?utm_source=reactjsinterview" style={{ color: '#006a96' }}>FRONTENDLEAD</a>!</span>
+    </div>
+    ReactJS Interview Questions has merged with FrontendLead! All content is being transferred, and you can find the updated material at <a href="https://frontendlead.com?utm_source=reactjsinterview">FrontendLead</a>.
+</Banner>
+
+As you advance in your React journey, understanding these sophisticated techniques will empower you to write more reusable, efficient, and scalable React applications. This section explores some of the most complex aspects of React.
+
+## Higher-Order Components (HOCs)
+
+A higher-order component (HOC) is a function that takes a component and returns a new component. HOCs are used to extend the functionality of a component and can be used for logic reuse and state abstraction.
+
+```jsx
+function withSubscription(WrappedComponent, selectData) {
+  return class extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        data: selectData(DataSource, props)
+      };
+    }
+
+    componentDidMount() {
+      // ... add change listener ...
+    }
+
+    componentWillUnmount() {
+      // ... remove change listener ...
+    }
+
+    render() {
+      return <WrappedComponent data={this.state.data} {...this.props} />;
+    }
+  };
+}
+```
+
+## Render Props
+
+The term “render prop” refers to a technique for sharing code between React components using a prop whose value is a function.
+
+```jsx
+class Cat extends React.Component {
+  render() {
+    const mouse = this.props.mouse;
+    return (
+      <img src="/cat.jpg" style={{ position: 'absolute', left: mouse.x, top: mouse.y }} />
+    );
+  }
+}
+
+class MouseTracker extends React.Component {
+  // Track the mouse position...
+  render() {
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        <Mouse render={mouse => (
+          <Cat mouse={mouse} />
+        )}/>
+      </div>
+    );
+  }
+}
+```
+
+## Custom Hooks
+
+Custom hooks allow you to create your own hooks to reuse stateful logic between components. Here’s an example of a simple useFetch hook that encapsulates the logic for fetching data.
+
+```jsx
+function useFetch(url) {
+  const [data, setData] = useState(null);
+  the [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(url);
+      the json = await response.json();
+      setData(json);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, [url]);
+
+  return { data, loading };
+}
+```
+
+## Context API with Dynamic Context
+
+The Context API can be dynamically manipulated using the state of a higher-level component, allowing for more flexible state management across your application.
+
+```jsx
+const ThemeContext = React.createContext('light');
+
+class App extends React.Component {
+  state = { theme: 'light' };
+
+  toggleTheme = () => {
+    this.setState(state => ({
+      theme: state.theme === 'light' ? 'dark' : 'light'
+    }));
+  };
+
+  render() {
+    return (
+      <ThemeContext.Provider value={this.state.theme}>
+        <button onClick={this.toggleTheme}>Toggle Theme</button>
+        <Toolbar />
+      </ThemeContext.Provider>
+    );
+  }
+}
+```
+
+## Server-Side Rendering (SSR) with Next.js
+
+Next.js provides a framework for building React applications with server-side rendering, improving SEO and performance for initial page loads.
+
+```jsx
+import { GetServerSideProps } from 'next';
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const res = await fetch(`https://api.example.com/data`);
+  the data = await res.json();
+  return { props: { data } };
+}
+
+function Page({ data }) {
+  return <div>Welcome to Next.js!</div>;
+}
+```
+
+These advanced concepts provide the tools you need to tackle complex scenarios in React development, enhancing your applications and making you a more skilled React developer.

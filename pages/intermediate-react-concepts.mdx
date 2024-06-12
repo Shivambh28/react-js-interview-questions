@@ -1,0 +1,160 @@
+---
+title: "Intermediate Guide to Understanding React JS"
+description: "Enhance your React knowledge with intermediate concepts. Discover how to handle state with Context API and leverage reducers with useReducer."
+---
+
+# Intermediate React Concepts
+
+import Banner from '../components/Banner'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+
+<Banner>
+    <div style={{ fontWeight: 'bold', fontSize: '18px' }} >
+        <FontAwesomeIcon style={{display: 'inline', marginRight: '10px'}} icon={faInfoCircle} width="24" /> <span>🎉  WE ARE NOW PART OF <a href="https://frontendlead.com?utm_source=reactjsinterview" style={{ color: '#006a96' }}>FRONTENDLEAD</a>!</span>
+    </div>
+    ReactJS Interview Questions has merged with FrontendLead! All content is being transferred, and you can find the updated material at <a href="https://frontendlead.com?utm_source=reactjsinterview">FrontendLead</a>.
+</Banner>
+
+As you become more comfortable with the basics of React, it’s time to explore some intermediate concepts that can help you build more efficient and powerful applications. This section covers key topics that every React developer should know as they progress in their learning journey.
+
+## State Management with Context
+
+The Context API provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+```jsx
+import React, { createContext, useContext } from 'react';
+
+const UserContext = createContext();
+
+function App() {
+  return (
+    <UserContext.Provider value={{ name: 'Jane Doe' }}>
+      <Child />
+    </UserContext.Provider>
+  );
+}
+
+function Child() {
+  const user = useContext(UserContext);
+  return <div>Hello, {user.name}!</div>;
+}
+\```
+
+## Using Reducers with useReducer
+
+\`useReducer\` is usually preferable to \`useState\` when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one.
+
+```jsx
+import React, { useReducer } from 'react';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+  return (
+    <>
+      Count: {state.count}
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+    </>
+  );
+}
+```
+
+## Optimizing Performance with useMemo and useCallback
+
+\`useMemo\` and \`useCallback\` are hooks that help you optimize performance in your React applications by memorizing expensive calculations and functions.
+
+### useMemo
+```jsx
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+```
+
+### useCallback
+```jsx
+const memoizedCallback = useCallback(() => {
+  doSomething(a, b);
+}, [a, b]);
+```
+
+## Handling Side Effects with useEffect
+
+\`useEffect\` allows you to perform side effects in function components. It can be used for data fetching, subscriptions, or manually changing the DOM.
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = \`You clicked \${count} times\`;
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
+
+## Advanced Routing with React Router
+
+React Router is a standard library for routing in React. It enables the navigation among views of various components in a React Application, allowing changing the browser URL, and keeping UI in sync with the URL.
+
+```jsx
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+```
+
+These intermediate concepts will expand your ability to handle more complex and dynamic applications using React. Embrace these techniques to enhance your app's performance and user experience.
