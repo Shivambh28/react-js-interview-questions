@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from "next/image";
 import { DocsThemeConfig } from 'nextra-theme-docs'
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const config: DocsThemeConfig = {
   logo: <>
       <Image src="/70x70.png" width={24} height={24} alt="logo" />
@@ -87,6 +87,7 @@ const config: DocsThemeConfig = {
 
         gtag('config', 'G-LFND2LJYY4');
     ` }} />
+      <SpeedInsights />
     </>
   ),
   banner: {
