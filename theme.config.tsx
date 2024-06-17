@@ -79,7 +79,7 @@ const config: DocsThemeConfig = {
           ]
         })}
       </script>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFND2LJYY4"></script>
+      <script asy nc src="https://www.googletagmanager.com/gtag/js?id=G-LFND2LJYY4"></script>
       <script dangerouslySetInnerHTML={{ __html: `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -93,7 +93,7 @@ const config: DocsThemeConfig = {
   banner: {
     key: '2.0-release',
     text: (
-      <a href="https://https://frontendlead.com?utm_source=reactjsinterview" target="_blank">
+      <a href="https://frontendlead.com?utm_source=reactjsinterview" target="_blank">
         🎉 We are now part of <b style={{ color: 'skyblue' }}>FrontEndLead.com</b>, the complete platform to prepare for front end interviews!
       </a>
     )
